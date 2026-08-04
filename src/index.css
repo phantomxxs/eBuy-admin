@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@keyframes caret-blink {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  50% {
+    opacity: 0;
+  }
+}
+
+@theme inline {
+  --breakpoint-xxl: 1400px;
+  --animate-caret-blink: caret-blink 1.2s ease-out infinite;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-jakarta: "Inter", system-ui, sans-serif;
+  --font-serif: "Inter", system-ui, sans-serif;
+
+  /* ── Brand palette ────────────────────────────────────────────────────────── */
+  --color-brand: #0b3b45;
+  --color-brandMid: #0e5666; /* gradient midpoint on auth panel */
+
+  /* ── Teal tint scale (base #A7E0D9) ──────────────────────────────────────── */
+  --color-blush: #a7e0d966; /* 40% opacity  — bg-blush  */
+  --color-blushDim: rgba(167, 224, 217, 0.3); /* 30% opacity  — bg-blush-dim */
+  --color-blur: #a7e0d933; /* 20% opacity  — bg-blur   */
+  --color-fade: #a7e0d999; /* 60% opacity  — bg-fade   */
+
+  /* ── Borders & dividers ──────────────────────────────────────────────────── */
+  --color-borderSubtle: rgba(236, 236, 236, 0.6); /* universal light border */
+  --color-borderStrong: rgba(236, 236, 236, 0.8); /* heavier dividers / hover */
+  --color-line: rgba(11, 59, 69, 0.03); /* ultra-subtle brand tint line */
+
+  /* ── Status: success ─────────────────────────────────────────────────────── */
+  --color-statusSuccess: #16a349;
+  --color-statusSuccessBg: #f2fef6;
+  --color-statusSuccessBorder: rgba(22, 163, 73, 0.12);
+
+  /* ── Status: error ───────────────────────────────────────────────────────── */
+  --color-statusError: #ffffff;
+  --color-statusErrorBg: rgba(192, 2, 10, 0.82);
+  --color-statusErrorBorder: #9e0108;
+
+  /* ── Status: info ────────────────────────────────────────────────────────── */
+  --color-statusInfo: #2f84df;
+  --color-statusInfoBg: #ecf5ff;
+  --color-statusInfoBorder: rgba(47, 132, 223, 0.08);
+
+  /* ── Status: warning ─────────────────────────────────────────────────────── */
+  --color-statusWarning: #d97706;
+  --color-statusWarningBg: #fef9ec;
+  --color-statusWarningBorder: rgba(217, 119, 6, 0.12);
+
+  /* ── UI utility colors ───────────────────────────────────────────────────── */
+  --color-hint: #828282; /* muted UI labels, export btn */
+  --color-danger: #ff383c; /* delete / destructive actions */
+  --color-surface: #f3faf8; /* page / auth surface bg */
+  --color-overlay: #070405; /* near-black overlay on previews */
+  --color-selection: rgba(79, 184, 178, 0.24); /* text-selection highlight */
+  --color-searchRing: hsla(174, 80%, 28%, 0.4); /* search input border ring */
+  --color-chartAxis: rgba(11, 59, 69, 0.4); /* recharts axis tick labels */
+
+  /* ── Shadows ─────────────────────────────────────────────────────────────── */
+  --shadow-auth: 0 4px 24px rgba(11, 59, 69, 0.07); /* auth form card */
+  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.04); /* subtle elevation */
+  --shadow-float: 0px 4px 4px 0px rgba(0, 0, 0, 0.08); /* floating elements */
+  --shadow-panel: 0 -12px 48px rgba(0, 0, 0, 0.35); /* dashboard preview panel */
+  --shadow-tooltip: 0 4px 16px rgba(0, 0, 0, 0.08); /* chart tooltips */
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.99 0.003 170);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #0e7c6b;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: #d97706;
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: #0e7c6b;
+  --chart-1: oklch(0.7 0.13 178);
+  --chart-2: oklch(0.72 0.16 75);
+  --chart-3: oklch(0.62 0.15 255);
+  --chart-4: oklch(0.75 0.14 140);
+  --chart-5: oklch(0.65 0.13 40);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #0e7c6b;
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.72 0.13 178);
+  --primary-foreground: oklch(0.16 0.02 178);
+  --secondary: oklch(0.78 0.15 70);
+  --secondary-foreground: oklch(0.2 0.02 60);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.72 0.13 178);
+  --chart-1: oklch(0.72 0.13 178);
+  --chart-2: oklch(0.78 0.15 70);
+  --chart-3: oklch(0.62 0.15 255);
+  --chart-4: oklch(0.75 0.14 140);
+  --chart-5: oklch(0.65 0.13 40);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.72 0.13 178);
+  --sidebar-primary-foreground: oklch(0.16 0.02 178);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes confetti-fall-explode {
+  0% {
+    transform: translateY(-80px) scale(0.3);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(0) scale(2.2);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0) scale(2.8);
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-confetti-fall-explode {
+    animation: confetti-fall-explode 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+/* Text selection — must be outside @layer to beat Chromium defaults */
+::selection {
+  background-color: #a7e0d9;
+  color: #0b3b45;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    @apply border-border;
+  }
+
+  *:focus-visible {
+    @apply outline-ring/50;
+  }
+
+  html {
+    accent-color: var(--color-secondary);
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  #root {
+    isolation: isolate;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+/* Force light-mode CSS variables on a subtree regardless of .dark on <html>.
+   Apply to surfaces that are always light (e.g. auth right panel). */
+@utility surface-light {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+}
+
+@utility text-xxs {
+  font-size: 0.625rem; /* 10px */
+}
+
+@utility text-md {
+  font-size: 1.125rem; /* 18px */
+}
+
+@utility container-app {
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+@utility page-bg {
+  background: linear-gradient(168deg, #eef8f5 8.64%, #fff 62.04%, #f1f8f6 83.34%);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none !important;
+  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}

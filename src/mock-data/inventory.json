@@ -1,0 +1,142 @@
+{
+  "metrics": {
+    "total": 12,
+    "inStock": 7,
+    "lowStock": 3,
+    "outOfStock": 2
+  },
+  "data": [
+    {
+      "id": "inv-001",
+      "product": "Hydra-Boost Hyaluronic Serum",
+      "sku": "SRM-HYA-001",
+      "category": "Serum",
+      "price": 18500,
+      "stock": 142,
+      "status": "in_stock",
+      "createdAt": "Jan 3, 2025",
+      "location": "Lagos"
+    },
+    {
+      "id": "inv-002",
+      "product": "Ceramide Repair Moisturiser",
+      "sku": "CRM-CER-002",
+      "category": "Cream",
+      "price": 14200,
+      "stock": 87,
+      "status": "in_stock",
+      "createdAt": "Jan 3, 2025",
+      "location": "Lagos"
+    },
+    {
+      "id": "inv-003",
+      "product": "SPF 50+ Invisible Sunscreen",
+      "sku": "SUN-INV-003",
+      "category": "Sunscreen",
+      "price": 12000,
+      "stock": 56,
+      "status": "in_stock",
+      "createdAt": "Jan 4, 2025",
+      "location": "Abuja"
+    },
+    {
+      "id": "inv-004",
+      "product": "Vitamin C Brightening Toner",
+      "sku": "TNR-VTC-004",
+      "category": "Toner",
+      "price": 9800,
+      "stock": 7,
+      "status": "low_stock",
+      "createdAt": "Jan 5, 2025",
+      "location": "Lagos"
+    },
+    {
+      "id": "inv-005",
+      "product": "Niacinamide 10% Serum",
+      "sku": "SRM-NIA-005",
+      "category": "Serum",
+      "price": 11500,
+      "stock": 12,
+      "status": "low_stock",
+      "createdAt": "Jan 6, 2025",
+      "location": "Port Harcourt"
+    },
+    {
+      "id": "inv-006",
+      "product": "AHA/BHA Exfoliating Cleanser",
+      "sku": "CLN-AHA-006",
+      "category": "Cleanser",
+      "price": 8500,
+      "stock": 0,
+      "status": "out_of_stock",
+      "createdAt": "Dec 20, 2024",
+      "location": "Lagos"
+    },
+    {
+      "id": "inv-007",
+      "product": "Retinol Night Repair Cream",
+      "sku": "CRM-RET-007",
+      "category": "Cream",
+      "price": 22000,
+      "stock": 34,
+      "status": "in_stock",
+      "createdAt": "Jan 7, 2025",
+      "location": "Abuja"
+    },
+    {
+      "id": "inv-008",
+      "product": "Rose Hip Facial Oil",
+      "sku": "OIL-RSH-008",
+      "category": "Oil",
+      "price": 16500,
+      "stock": 28,
+      "status": "in_stock",
+      "createdAt": "Jan 8, 2025",
+      "location": "Lagos"
+    },
+    {
+      "id": "inv-009",
+      "product": "Kaolin Clay Purifying Mask",
+      "sku": "MSK-KLN-009",
+      "category": "Mask",
+      "price": 7200,
+      "stock": 9,
+      "status": "low_stock",
+      "createdAt": "Jan 9, 2025",
+      "location": "Port Harcourt"
+    },
+    {
+      "id": "inv-010",
+      "product": "Gentle Micellar Cleanser",
+      "sku": "CLN-MCL-010",
+      "category": "Cleanser",
+      "price": 6800,
+      "stock": 0,
+      "status": "out_of_stock",
+      "createdAt": "Dec 15, 2024",
+      "location": "Lagos"
+    },
+    {
+      "id": "inv-011",
+      "product": "Peptide Anti-Aging Eye Cream",
+      "sku": "CRM-PEP-011",
+      "category": "Cream",
+      "price": 24500,
+      "stock": 45,
+      "status": "in_stock",
+      "createdAt": "Jan 10, 2025",
+      "location": "Abuja"
+    },
+    {
+      "id": "inv-012",
+      "product": "Shea & Argan Body Butter",
+      "sku": "BDY-SHA-012",
+      "category": "Bodycare",
+      "price": 9500,
+      "stock": 63,
+      "status": "in_stock",
+      "createdAt": "Jan 11, 2025",
+      "location": "Lagos"
+    }
+  ]
+}

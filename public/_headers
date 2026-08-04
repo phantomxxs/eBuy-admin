@@ -1,0 +1,3 @@
+# IMPORTANT: Explicitly set CSS MIME type to prevent misconfiguration
+/assets/*.css
+  Content-Type: text/css

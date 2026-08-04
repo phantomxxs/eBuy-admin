@@ -1,0 +1,4 @@
+name,sku,price,brand,stock_qty,low_stock_alert,discount,description,ingredients,how_to_use,status
+Hydrating Face Serum,EBY-HFS-001,15000,eBuy Skin,50,10,5,A lightweight serum that deeply hydrates and plumps the skin.,"Aqua, Hyaluronic Acid, Glycerin, Niacinamide",Apply 2-3 drops to clean face before moisturiser.,active
+Brightening Eye Cream,TUL-BEC-002,22000,eBuy Skin,30,5,,Reduces dark circles and puffiness around the eye area.,"Aqua, Caffeine, Vitamin C, Peptides, Shea Butter",Gently pat around the eye area morning and night.,active
+Purifying Clay Mask,TUL-PCM-003,9500,Vilvah,40,8,10,Deep-cleansing mask that draws out impurities and tightens pores.,"Kaolin Clay, Bentonite, Tea Tree Oil, Aloe Vera",Apply evenly to face. Leave for 10 minutes then rinse.,active

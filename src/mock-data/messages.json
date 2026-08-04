@@ -1,0 +1,107 @@
+{
+  "metrics": {
+    "total": 8,
+    "sent": 5,
+    "scheduled": 1,
+    "draft": 2,
+    "failed": 0
+  },
+  "data": [
+    {
+      "id": "msg-001",
+      "title": "January Skincare Tips",
+      "sentTo": "All customers",
+      "channels": ["Email", "Push"],
+      "delivered": 4820,
+      "opens": 1734,
+      "rate": "35.9%",
+      "status": "sent",
+      "type": "Announcement",
+      "sentAt": "Jan 10, 2025"
+    },
+    {
+      "id": "msg-002",
+      "title": "Free Delivery Reminder",
+      "sentTo": "Customers with ₦20k+ cart",
+      "channels": ["SMS"],
+      "delivered": 312,
+      "opens": 289,
+      "rate": "92.6%",
+      "status": "sent",
+      "type": "SMS",
+      "sentAt": "Jan 9, 2025"
+    },
+    {
+      "id": "msg-003",
+      "title": "Valentine's Day Sale Coming Soon",
+      "sentTo": "All customers",
+      "channels": ["Email"],
+      "delivered": 0,
+      "opens": 0,
+      "rate": "0%",
+      "status": "scheduled",
+      "type": "Promotional",
+      "sentAt": "Feb 1, 2025"
+    },
+    {
+      "id": "msg-004",
+      "title": "Order Confirmation — ORD-2025-089",
+      "sentTo": "Adaeze Okonkwo",
+      "channels": ["Email", "SMS"],
+      "delivered": 1,
+      "opens": 1,
+      "rate": "100%",
+      "status": "sent",
+      "type": "Transactional",
+      "sentAt": "Jan 12, 2025"
+    },
+    {
+      "id": "msg-005",
+      "title": "Low Stock Alert: Vitamin C Toner",
+      "sentTo": "Store managers",
+      "channels": ["In-app"],
+      "delivered": 3,
+      "opens": 3,
+      "rate": "100%",
+      "status": "sent",
+      "type": "Announcement",
+      "sentAt": "Jan 8, 2025"
+    },
+    {
+      "id": "msg-006",
+      "title": "New Arrivals: Peptide Eye Cream",
+      "sentTo": "All customers",
+      "channels": ["Email", "Push"],
+      "delivered": 4820,
+      "opens": 2168,
+      "rate": "44.9%",
+      "status": "sent",
+      "type": "Announcement",
+      "sentAt": "Jan 7, 2025"
+    },
+    {
+      "id": "msg-007",
+      "title": "Exclusive Member Flash Sale",
+      "sentTo": "High-value customers",
+      "channels": ["Email", "SMS", "Push"],
+      "delivered": 0,
+      "opens": 0,
+      "rate": "0%",
+      "status": "draft",
+      "type": "Promotional",
+      "sentAt": "—"
+    },
+    {
+      "id": "msg-008",
+      "title": "Survey: How did we do?",
+      "sentTo": "Recent buyers",
+      "channels": ["Email"],
+      "delivered": 0,
+      "opens": 0,
+      "rate": "0%",
+      "status": "draft",
+      "type": "Announcement",
+      "sentAt": "—"
+    }
+  ]
+}

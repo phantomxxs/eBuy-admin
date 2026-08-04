@@ -1,0 +1,9 @@
+id,name,sku,category,price,stock,status,createdAt,brandName,skinType,location,lowStockAlert,discount,description,ingredients,howToUse
+8,Product Seven,SKU007,"Fragrance, Skin Care",310,123,active,2026-03-17 20:54:24,,,,,,,,
+7,Product Six,SKU006-1,"Fragrance, Skin Care",310,123,inactive,2026-03-17 20:53:33,,,,,,,,
+6,Product Six,SKU006,"Fragrance, Skin Care",310,123,inactive,2026-03-17 20:50:32,,,,,,,,
+5,Product Four,SKU004-1,"Fragrance, Skin Care",300,123,inactive,2026-03-16 07:20:08,,,,,,,,
+4,Product Four,SKU004,"Fragrance, Skin Care",300,123,inactive,2026-03-16 07:04:48,,,,,,,,
+3,Product Three,SKU003,"Fragrance, Skin Care",300,123,active,2026-03-16 07:03:40,,,,,,,,
+2,Product Two,SKU002,Life Style,100,200,active,2026-03-10 19:48:51,,,,,,,,
+1,Product 1,SKU001,Skin Care,300,200,active,2026-03-10 19:47:44,,,,,,,,

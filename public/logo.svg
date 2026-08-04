@@ -1,0 +1,25 @@
+<svg width="176" height="48" viewBox="0 0 176 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bag handle -->
+  <path
+    d="M15 15.5V13.5c0-3.87 3.13-7 7-7h8c3.87 0 7 3.13 7 7v2"
+    stroke="#0E7C6B"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+  <!-- Bag body -->
+  <rect x="7" y="15" width="30" height="26" rx="7" fill="#0E7C6B" />
+  <!-- Price-tag accent -->
+  <circle cx="42" cy="39.5" r="4.5" fill="#D97706" />
+  <!-- Wordmark -->
+  <text
+    x="51"
+    y="33.5"
+    font-family="Inter, system-ui, -apple-system, Helvetica, Arial, sans-serif"
+    font-size="29"
+    font-weight="800"
+    letter-spacing="-0.6"
+  >
+    <tspan fill="#0B3B45">e</tspan>
+    <tspan fill="#0E7C6B">Buy</tspan>
+  </text>
+</svg>
