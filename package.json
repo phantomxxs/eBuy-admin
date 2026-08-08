@@ -13,7 +13,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "oxlint src",
-    "deploy": "pnpm run build && wrangler pages deploy dist/client --project-name=ebuy-admin-ui",
+    "deploy": "pnpm run build && wrangler deploy",
     "prepare": "husky"
   },
   "lint-staged": {

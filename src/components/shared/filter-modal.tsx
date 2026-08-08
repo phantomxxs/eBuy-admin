@@ -5,7 +5,6 @@ import { DatePicker } from "@/components/ui/date-picker"
 import { cn } from "@/lib/utils"
 import CategorySearchInput from "@/components/ui/category-search-input"
 import LocationSearchInput from "@/components/ui/location-search-input"
-import SkinTypeSearchInput from "@/components/ui/skin-type-search-input"
 import StaffSearchInput from "@/components/ui/staff-search-input"
 
 export type FilterValues = Record<string, string[]>
@@ -22,7 +21,6 @@ export type FilterField =
     }
   | { type: "category-search"; key: string; label: string }
   | { type: "location-search"; key: string; label: string }
-  | { type: "skin-type-search"; key: string; label: string }
   | { type: "staff-search"; key: string; label: string }
 
 interface Props {
@@ -147,15 +145,6 @@ export default function FilterModal({ isOpen, onClose, title, fields, values, on
                 value={draft[field.key] ?? []}
                 onChange={(v) => setMultiSearch(field.key, v)}
                 placeholder="Search locations…"
-              />
-            )}
-
-            {field.type === "skin-type-search" && (
-              <SkinTypeSearchInput
-                multiple
-                value={draft[field.key] ?? []}
-                onChange={(v) => setMultiSearch(field.key, v)}
-                placeholder="Search skin types…"
               />
             )}
 

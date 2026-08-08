@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import Pagination from "@/components/ui/pagination"
 import FormInput from "@/components/ui/form-input"
 import LocationSearchInput from "@/components/ui/location-search-input"
-import SkinTypeSearchInput from "@/components/ui/skin-type-search-input"
 import CategorySearchInput from "@/components/ui/category-search-input"
 import { useSearchMasterCatalog, useGetMasterCatalogById } from "@/store/queries/products"
 import { useImportFromMasterCatalog } from "@/store/mutations/products"
@@ -397,7 +396,6 @@ function CatalogDetailModal({
       stockQty: "",
       location: [] as string[],
       category: [] as string[],
-      skinType: [] as string[],
       sku: "",
       lowStockAlert: "0",
       discount: "0",
@@ -407,7 +405,6 @@ function CatalogDetailModal({
       if (!product) return
       const allLocations = value.location.includes("0")
       const allCategories = value.category.includes("0")
-      const allSkinTypes = value.skinType.includes("0")
       importMutation.mutate(
         {
           masterProductId: product.id,
@@ -415,10 +412,8 @@ function CatalogDetailModal({
           stockQty: parseInt(value.stockQty),
           locationIds: allLocations ? [] : value.location.map(Number),
           categoryIds: allCategories ? [] : value.category.map(Number),
-          skinType: allSkinTypes ? [] : value.skinType,
           allLocations: allLocations || undefined,
           allCategories: allCategories || undefined,
-          allSkinTypes: allSkinTypes || undefined,
           sku: value.sku || undefined,
           lowStockAlert: value.lowStockAlert ? parseInt(value.lowStockAlert) : undefined,
           discount: value.discount ? parseFloat(value.discount) : undefined,
@@ -568,7 +563,6 @@ function BulkImportConfigModal({
       stockQty: "",
       location: [] as string[],
       category: [] as string[],
-      skinType: [] as string[],
       sku: "",
       lowStockAlert: "0",
       discount: "0",
@@ -578,7 +572,6 @@ function BulkImportConfigModal({
       setIsImporting(true)
       const allLocations = value.location.includes("0")
       const allCategories = value.category.includes("0")
-      const allSkinTypes = value.skinType.includes("0")
       try {
         await Promise.all(
           products.map((p) =>
@@ -588,10 +581,8 @@ function BulkImportConfigModal({
               stockQty: parseInt(value.stockQty),
               locationIds: allLocations ? [] : value.location.map(Number),
               categoryIds: allCategories ? [] : value.category.map(Number),
-              skinType: allSkinTypes ? [] : value.skinType,
               allLocations: allLocations || undefined,
               allCategories: allCategories || undefined,
-              allSkinTypes: allSkinTypes || undefined,
               sku: value.sku || undefined,
               lowStockAlert: value.lowStockAlert ? parseInt(value.lowStockAlert) : undefined,
               discount: value.discount ? parseFloat(value.discount) : undefined,
@@ -802,27 +793,6 @@ function ImportConfigFields({ form }: { form: any }) {
       </form.Field>
 
       <form.Field
-        name="skinType"
-        validators={{
-          onChange: ({ value }: { value: string[] }) =>
-            validateField(masterCatalogImportSchema, "skinType", value),
-        }}
-      >
-        {(field: any) => (
-          <SkinTypeSearchInput
-            multiple
-            showAllOption
-            label="Skin type"
-            placeholder="Search skin types…"
-            value={field.state.value ?? []}
-            onChange={field.handleChange}
-            error={field.state.meta.errors[0]?.toString()}
-            required
-          />
-        )}
-      </form.Field>
-
-      <form.Field
         name="location"
         validators={{
           onChange: ({ value }: { value: string[] }) =>
@@ -889,21 +859,6 @@ const ProductInfoBlock = ({ product }: { product: MasterCatalogProduct }) => (
         <DetailField label="Ingredients" value={product.ingredients!.join(", ")} />
       )}
       {product.howToUse && <DetailField label="How to use" value={product.howToUse} />}
-      {(product.skinTypes?.length ?? 0) > 0 && (
-        <div>
-          <p className="font-jakarta text-brand text-xs font-semibold">Skin types</p>
-          <div className="mt-1.5 flex flex-wrap gap-1.5">
-            {product.skinTypes!.map((type) => (
-              <span
-                key={type}
-                className="font-jakarta bg-brand/5 text-brand/60 rounded-full px-2.5 py-1 text-xs"
-              >
-                {type}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
       {product.weight != null && <DetailField label="Weight" value={`${product.weight}g`} />}
     </div>
   </div>

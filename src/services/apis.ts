@@ -1,11 +1,8 @@
-// Base for product-image endpoints — these sit at /rest/V1/adminportal/ (no hyphen),
-// not under the standard /rest/V1/admin-portal/ base used by the axios instance.
-const _imageApiBase = (import.meta.env.VITE_EBUY_BASE_URL ?? "").replace(
-  /\/rest\/V1\/admin-portal$/,
-  "",
-)
+// Base for product-image endpoints — these sit at /api/adminportal/ (no hyphen),
+// not under the standard /api/admin-portal/ base used by the axios instance.
+const _imageApiBase = (import.meta.env.VITE_EBUY_BASE_URL ?? "").replace(/\/admin-portal$/, "")
 
-// Base for geo endpoints — these sit at /rest/V1/geo/, not under /rest/V1/admin-portal/.
+// Base for geo endpoints — these sit at /api/geo/, not under /api/admin-portal/.
 const _geoApiBase = (import.meta.env.VITE_EBUY_BASE_URL ?? "").replace(/\/admin-portal$/, "")
 
 // ─── Admin Portal ─────────────────────────────────────────────────────────────
@@ -47,7 +44,6 @@ export const PRODUCT_MASTER_CATALOG = "/products/master-catalog"
 export const PRODUCT_MASTER_CATALOG_BY_ID = (id: number) => `/products/master-catalog/${id}`
 export const PRODUCT_MASTER_CATALOG_IMPORT = "/products/master-catalog/import"
 export const PRODUCT_METRICS = "/products/stats"
-export const PRODUCT_SKIN_TYPES = "/products/skin-types"
 export const PRODUCT_BULK_UPLOAD = "/products/bulk-upload"
 export const PRODUCT_BULK_UPLOAD_TEMPLATE = "/products/bulk-upload/template"
 export const PRODUCT_QUEUED_BULK_UPLOAD_TARGET = "/products/queued-bulk-uploads/upload-target"
@@ -160,7 +156,7 @@ export const DISCOUNT_BY_ID = (id: string) => `${DISCOUNTS}/${id}`
 export const DISCOUNT_STATUS = (id: string) => `${DISCOUNTS}/${id}/status`
 export const DISCOUNT_BY_CODE = (code: string) => `${DISCOUNTS}/code/${code}`
 
-// GEO LOCATION — absolute URLs derived from VITE_EBUY_BASE_URL (/rest/V1/geo/...)
+// GEO LOCATION — absolute URLs derived from VITE_EBUY_BASE_URL (/api/geo/...)
 export const GEO_COUNTRIES = `${_geoApiBase}/geo/countries`
 export const GEO_STATES = (code: string) => `${_geoApiBase}/geo/countries/${code}/states`
 export const GEO_LGAS = (code: number) => `${_geoApiBase}/geo/states/${code}/lgas`

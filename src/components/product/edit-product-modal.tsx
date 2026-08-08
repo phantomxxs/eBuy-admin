@@ -10,7 +10,6 @@ import { productSchema, type ProductFormValues, validateImageFiles } from "@/val
 import { validateField } from "@/lib/utils"
 import CategorySearchInput from "@/components/ui/category-search-input"
 import LocationSearchInput from "@/components/ui/location-search-input"
-import SkinTypeSearchInput from "@/components/ui/skin-type-search-input"
 import { useGetProductById } from "@/store/queries/products"
 import {
   useUpdateProduct,
@@ -61,11 +60,6 @@ function EditProductForm({ isOpen, onClose, product: productProp }: EditProductM
       category: productProp?.categoryIds?.map(String) ?? [],
       price: productProp?.price != null ? String(productProp.price) : "",
       sku: productProp?.sku ?? "",
-      skinType: Array.isArray(productProp?.skinType)
-        ? productProp.skinType.map((sk) => String(sk.skin_type_id))
-        : productProp?.skinType
-          ? [productProp.skinType]
-          : ([] as string[]),
       stock: productProp?.stock != null ? String(productProp.stock) : "",
       lowStockAlert: productProp?.lowStockAlert != null ? String(productProp.lowStockAlert) : "",
       discount: productProp?.discount != null ? String(productProp.discount) : "",
@@ -78,7 +72,6 @@ function EditProductForm({ isOpen, onClose, product: productProp }: EditProductM
     onSubmit: ({ value }) => {
       if (!product) return
       const allCategories = value.category.includes("0")
-      const allSkinTypes = (value.skinType ?? []).includes("0")
       const allLocations = (value.location ?? []).includes("0")
       updateProduct.mutate(
         {
@@ -98,7 +91,6 @@ function EditProductForm({ isOpen, onClose, product: productProp }: EditProductM
               ? value.location.map((id) => parseInt(id))
               : undefined,
           sku: value.sku || undefined,
-          skinType: allSkinTypes ? [] : (value.skinType ?? []),
           stockQty: value.stock ? parseInt(value.stock) : undefined,
           lowStockAlert: value.lowStockAlert ? parseInt(value.lowStockAlert) : undefined,
           discount: value.discount ? parseFloat(value.discount) : undefined,
@@ -107,7 +99,6 @@ function EditProductForm({ isOpen, onClose, product: productProp }: EditProductM
           howToUse: value.howToUse || undefined,
           status: (value.status as "active" | "archived") ?? product.status,
           ...(allCategories && { allCategories: true }),
-          ...(allSkinTypes && { allSkinTypes: true }),
           ...(allLocations && { allLocations: true }),
         },
         {
@@ -129,14 +120,6 @@ function EditProductForm({ isOpen, onClose, product: productProp }: EditProductM
     form.setFieldValue("category", product.categoryIds?.map(String) ?? [])
     form.setFieldValue("price", String(product.price))
     form.setFieldValue("sku", product.sku ?? "")
-    form.setFieldValue(
-      "skinType",
-      Array.isArray(product.skinType)
-        ? product.skinType.map((sk) => String(sk.skin_type_id))
-        : product.skinType
-          ? [product.skinType]
-          : [],
-    )
     form.setFieldValue("stock", product.stock != null ? String(product.stock) : "")
     form.setFieldValue(
       "lowStockAlert",
@@ -386,27 +369,6 @@ function EditProductForm({ isOpen, onClose, product: productProp }: EditProductM
               )}
             </form.Field>
           </div>
-
-          {/* Skin type */}
-          <form.Field
-            name="skinType"
-            validators={{
-              onChange: ({ value }) => validateField(productSchema, "skinType", value),
-            }}
-          >
-            {(field) => (
-              <SkinTypeSearchInput
-                multiple
-                showAllOption
-                label="Skin type"
-                placeholder="Search skin types…"
-                value={field.state.value}
-                onChange={field.handleChange}
-                error={field.state.meta.errors[0]?.toString()}
-                required
-              />
-            )}
-          </form.Field>
 
           {/* Stock + Low stock alert */}
           <div className="grid grid-cols-2 gap-3">

@@ -228,7 +228,6 @@ function FailedRowItem({
               [
                 ["Name", row.name],
                 ["Category", row.category],
-                ["Skin type", row.skin_type],
                 ["Locations", row.locations],
               ] as [string, string | undefined][]
             ).map(([label, val]) =>

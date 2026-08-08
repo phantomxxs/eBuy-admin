@@ -9,7 +9,6 @@ import { productSchema, type ProductFormValues, validateImageFiles } from "@/val
 import { validateField } from "@/lib/utils"
 import CategorySearchInput from "@/components/ui/category-search-input"
 import LocationSearchInput from "@/components/ui/location-search-input"
-import SkinTypeSearchInput from "@/components/ui/skin-type-search-input"
 import { useCreateProduct } from "@/store/mutations/products"
 import { showAlert } from "@/store/alerts"
 import MasterCatalogImportModal from "./master-catalog-import-modal"
@@ -43,7 +42,6 @@ export default function AddProductModal({ isOpen, onClose }: AddProductModalProp
       category: [] as string[],
       price: "",
       sku: "",
-      skinType: [] as string[],
       stock: "",
       lowStockAlert: "0",
       discount: "0",
@@ -56,14 +54,12 @@ export default function AddProductModal({ isOpen, onClose }: AddProductModalProp
     onSubmit: ({ value }) => {
       const discountValue = parseFloat(value.discount == "None" ? "0" : value.discount)
       const allCategories = value.category.includes("0")
-      const allSkinTypes = value.skinType.includes("0")
       const allLocations = (value.location ?? []).includes("0")
       const payload = {
         name: value.name.trim().replace(/\b\w/g, (c) => c.toUpperCase()),
         price: parseFloat(value.price),
         categoryIds: allCategories ? [] : value.category.map((id) => parseInt(id)),
         brand: value.brandName ?? "",
-        skinType: allSkinTypes ? [] : (value.skinType ?? []),
         stockQty: value.stock ? parseInt(value.stock) : 0,
         lowStockAlert: value.lowStockAlert ? parseInt(value.lowStockAlert) : 0,
         discount: discountValue,
@@ -74,7 +70,6 @@ export default function AddProductModal({ isOpen, onClose }: AddProductModalProp
         status: submitStatusRef.current,
         locationIds: allLocations ? [] : (value.location ?? []).map((id) => parseInt(id)),
         ...(allCategories && { allCategories: true }),
-        ...(allSkinTypes && { allSkinTypes: true }),
         ...(allLocations && { allLocations: true }),
       }
       createProduct.mutate(
@@ -310,27 +305,6 @@ export default function AddProductModal({ isOpen, onClose }: AddProductModalProp
                 value={field.state.value ?? ""}
                 onChange={(v) => field.handleChange(v)}
                 onBlur={field.handleBlur}
-                error={field.state.meta.errors[0]?.toString()}
-                required
-              />
-            )}
-          </form.Field>
-
-          {/* Skin type */}
-          <form.Field
-            name="skinType"
-            validators={{
-              onChange: ({ value }) => validateField(productSchema, "skinType", value),
-            }}
-          >
-            {(field) => (
-              <SkinTypeSearchInput
-                multiple
-                showAllOption
-                label="Skin type"
-                placeholder="Search skin types…"
-                value={field.state.value}
-                onChange={field.handleChange}
                 error={field.state.meta.errors[0]?.toString()}
                 required
               />

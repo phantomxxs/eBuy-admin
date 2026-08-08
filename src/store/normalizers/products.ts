@@ -5,7 +5,6 @@ import type {
   GalleryImage,
   RawProduct,
   RawProductMetrics,
-  RawSkinTypeItem,
 } from "@/types/products"
 
 export function normalizeProduct(raw: unknown): Product {
@@ -36,13 +35,6 @@ export function normalizeProduct(raw: unknown): Product {
     status: (p.status ?? "active") as Product["status"],
     createdAt: p.createdAt ?? p.created_at ?? "",
     brandName: p.brandName ?? p.brand_name ?? p.brand,
-    skinType: Array.isArray(p.skin_type) ? (p.skin_type as RawSkinTypeItem[]) : p.skinType,
-    skinTypeString: Array.isArray(p.skin_type)
-      ? (p.skin_type as RawSkinTypeItem[]).map((sk) => sk.name).join(", ")
-      : p.skinType
-        ? String(p.skinType)
-        : undefined,
-    // : (p.skinType ?? p.skin_type),
     locations: locations.length ? locations : undefined,
     lowStockAlert: p.lowStockAlert ?? p.low_stock_alert,
     discount: p.discount != null ? parseFloat(String(p.discount)) || undefined : undefined,

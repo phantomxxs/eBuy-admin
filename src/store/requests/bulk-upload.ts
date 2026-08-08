@@ -118,7 +118,6 @@ function normalizeBulkUploadJobItem(raw: unknown): BulkUploadJobItem {
         name: row.name as string | undefined,
         sku: row.sku as string | undefined,
         category: row.category as string | undefined,
-        skin_type: row.skin_type as string | undefined,
         locations: row.locations as string | undefined,
         status: row.status as string | undefined,
       },

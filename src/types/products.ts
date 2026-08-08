@@ -7,7 +7,6 @@ export interface GetProductsParams {
   category?: string
   status?: string
   locationId?: string
-  skinType?: string
   stockStatus?: string
   priceMin?: number
   priceMax?: number
@@ -30,11 +29,6 @@ export interface RawProductCategory {
   category_id?: number
   name?: string
   product_count?: number
-}
-
-export interface RawSkinTypeItem {
-  skin_type_id: number
-  name: string
 }
 
 export interface RawProductLocation {
@@ -66,8 +60,6 @@ export interface RawProduct {
   brand_name?: string
   brand?: string
   brandName?: string
-  skin_type?: string | RawSkinTypeItem[]
-  skinType?: string
   locations?: RawProductLocation[]
   low_stock_alert?: number
   lowStockAlert?: number
@@ -108,8 +100,6 @@ export interface Product {
   status: ProductStatus
   createdAt: string
   brandName?: string
-  skinType?: RawSkinTypeItem[] | string
-  skinTypeString?: string
   locations?: ProductLocation[]
   lowStockAlert?: number
   discount?: number
@@ -134,7 +124,6 @@ export interface CreateProductPayload {
   price: number
   categoryIds: number[]
   brand: string
-  skinType: string[]
   stockQty: number
   lowStockAlert: number
   discount?: number
@@ -152,7 +141,6 @@ export interface UpdateProductPayload {
   sku?: string
   price?: number
   categoryIds?: number[]
-  skinType?: string[]
   stockQty?: number
   lowStockAlert?: number
   locationIds?: number[]
@@ -240,7 +228,6 @@ export interface MasterCatalogProduct {
   weight?: number
   imageUrl?: string
   galleryImages?: string[]
-  skinTypes?: string[]
   alreadyInInventory?: boolean
 }
 
@@ -250,7 +237,6 @@ export interface MasterCatalogSearchParams {
   currentPage?: number
   categoryId?: number
   brandId?: number
-  skinTypes?: string
   sortBy?: string
   sortOrder?: string
 }
@@ -261,14 +247,12 @@ export interface ImportFromMasterCatalogPayload {
   stockQty: number
   locationIds: number[]
   categoryIds: number[]
-  skinType: string[]
   sku?: string
   lowStockAlert?: number
   discount?: number
   status?: string
   allLocations?: boolean
   allCategories?: boolean
-  allSkinTypes?: boolean
 }
 
 export interface MasterCatalogImportResult {

@@ -182,7 +182,6 @@ const AboutTab = ({ product }: { product: Product }) => {
     { label: "SKU", value: product.sku },
     { label: "Category", value: <CategoryCell product={product} /> },
     { label: "Price", value: formatPrice(product.price) },
-    { label: "Skin type", value: <SkinTypeCell skinType={product.skinTypeString} /> },
     { label: "Stock level", value: product.stock },
     { label: "Location", value: <LocationCell locations={product.locations} /> },
     { label: "Low stock alert", value: product.lowStockAlert ?? "—" },
@@ -490,30 +489,6 @@ const CategoryCell = ({ product }: { product: Product }) => {
   if (!names.length) return <span>—</span>
   const visible = names.slice(0, 2)
   const overflow = names.slice(2)
-  return (
-    <span className="flex items-center gap-1">
-      <span>{visible.join(", ")}</span>
-      {overflow.length > 0 && (
-        <WithTooltip
-          trigger={
-            <span className="text-brand/50 cursor-default text-xs">+{overflow.length} others</span>
-          }
-          content={overflow.join(", ")}
-        />
-      )}
-    </span>
-  )
-}
-
-const SkinTypeCell = ({ skinType }: { skinType?: string }) => {
-  if (!skinType) return <span>—</span>
-  const types = skinType
-    .split(",")
-    .map((s) => s.trim())
-    .filter(Boolean)
-  if (!types.length) return <span>—</span>
-  const visible = types.slice(0, 2)
-  const overflow = types.slice(2)
   return (
     <span className="flex items-center gap-1">
       <span>{visible.join(", ")}</span>

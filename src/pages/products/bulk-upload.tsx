@@ -220,8 +220,8 @@ const INSTRUCTION_STEPS: { title: string; points: React.ReactNode[] }[] = [
         <StatusPill variant="warning">draft</StatusPill>.
       </>,
       <>
-        <Col>Category</Col> <Col>Skin Type</Col> and <Col>Location</Col> values must exactly match
-        records already in the system.
+        <Col>Category</Col> and <Col>Location</Col> values must exactly match records already in
+        the system.
       </>,
       "Each SKU must be unique — duplicates within the same file will be rejected.",
       "SKUs that already exist in the catalog will also be rejected.",

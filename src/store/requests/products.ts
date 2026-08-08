@@ -2,7 +2,6 @@ import instance from "@/services/axios-instance"
 import {
   PRODUCTS,
   PRODUCT_METRICS,
-  PRODUCT_SKIN_TYPES,
   PRODUCT_BULK_UPLOAD,
   PRODUCT_EXPORT_CSV,
   PRODUCT_BY_ID,
@@ -52,7 +51,6 @@ export const getProducts = async (
       ...(params.status && { status: params.status }),
       ...(params.category && { category_id: params.category }),
       ...(params.locationId && { location_id: params.locationId }),
-      ...(params.skinType && { skin_type: params.skinType }),
       ...(params.stockStatus && { stock_status: params.stockStatus }),
       ...(params.priceMin != null && { price_min: params.priceMin }),
       ...(params.priceMax != null && { price_max: params.priceMax }),
@@ -199,22 +197,6 @@ export const getProductActivityLogs = async (
   // }
 }
 
-export const getSkinTypeOptions = async (): Promise<{ value: string; label: string }[]> => {
-  const response = await instance.get(PRODUCT_SKIN_TYPES)
-  const body = response.data
-  const raw: unknown[] = Array.isArray(body?.data) ? body.data : Array.isArray(body) ? body : []
-  return raw.map((item) => {
-    if (item && typeof item === "object") {
-      const obj = item as Record<string, unknown>
-      return {
-        value: String(obj.id ?? obj.value ?? ""),
-        label: String(obj.label ?? obj.name ?? obj.value ?? ""),
-      }
-    }
-    return { value: String(item), label: String(item) }
-  })
-}
-
 export const bulkUploadProducts = async (file: File): Promise<BulkUploadResult> => {
   const buffer = await file.arrayBuffer()
   const csv = btoa(String.fromCharCode(...new Uint8Array(buffer)))
@@ -289,9 +271,6 @@ function normalizeMasterCatalogProduct(raw: unknown): MasterCatalogProduct {
     weight: r.weight != null ? Number(r.weight) : undefined,
     imageUrl: r.primary_image_url ? String(r.primary_image_url) : (allImages[0] ?? undefined),
     galleryImages: allImages.length > 1 ? allImages.slice(1) : undefined,
-    skinTypes: Array.isArray(r.skin_types)
-      ? (r.skin_types as unknown[]).map(String).filter(Boolean)
-      : undefined,
     alreadyInInventory: Boolean(r.already_in_inventory),
   }
 }

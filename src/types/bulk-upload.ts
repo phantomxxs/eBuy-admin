@@ -26,7 +26,6 @@ export interface BulkUploadJobItem {
       name?: string
       sku?: string
       category?: string
-      skin_type?: string
       locations?: string
       status?: string
     }

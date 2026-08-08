@@ -1,6 +1,8 @@
 # eBuy Admin UI
 
-Admin dashboard for the eBuy platform.
+eBuy is a beauty and personal-care e-commerce platform for the Nigerian market. This app is the admin operations console for the platform — the back office where staff run the business. It covers product and category management, inventory and store locations, order fulfilment, customer directory and purchase history, promotions, banners, vouchers and gift cards, staff and role management, transactions, activity analytics, messaging, and store settings.
+
+It is the management half of the eBuy platform, served by the eBuy REST API alongside the customer storefront.
 
 ## Tech Stack
 

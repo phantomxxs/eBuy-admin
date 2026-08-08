@@ -2,7 +2,6 @@ export const GET_PRODUCTS_KEY = "products"
 export const GET_PRODUCT_BY_ID_KEY = "product-by-id"
 export const GET_PRODUCT_METRICS_KEY = "product-metrics"
 export const GET_PRODUCT_ACTIVITY_KEY = "product-activity"
-export const GET_SKIN_TYPES_KEY = "skin-types"
 export const GET_MASTER_CATALOG_KEY = "master-catalog"
 export const GET_MASTER_CATALOG_BY_ID_KEY = "master-catalog-by-id"
 

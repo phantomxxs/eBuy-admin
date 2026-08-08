@@ -55,7 +55,6 @@ export default function ProductsPage() {
     status: filters.status?.join(",") || undefined,
     category: filters.category_id?.join(",") || undefined,
     locationId: filters.location_id?.join(",") || undefined,
-    skinType: filters.skin_type?.join(",") || undefined,
     stockStatus: filters.stock_status?.join(",") || undefined,
     priceMin: filters.price_min?.[0] ? Number(filters.price_min[0]) : undefined,
     priceMax: filters.price_max?.[0] ? Number(filters.price_max[0]) : undefined,
@@ -369,7 +368,6 @@ const PRODUCT_FILTERS: FilterField[] = [
     ],
   },
   { type: "category-search", key: "category_id", label: "Category" },
-  { type: "skin-type-search", key: "skin_type", label: "Skin type" },
   { type: "location-search", key: "location_id", label: "Location" },
   {
     key: "stock_status",

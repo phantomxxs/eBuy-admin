@@ -5,7 +5,6 @@ import {
   getProductById,
   getProductMetrics,
   getProductActivityLogs,
-  getSkinTypeOptions,
   searchMasterCatalog,
   getMasterCatalogById,
 } from "../requests/products"
@@ -14,7 +13,6 @@ import {
   GET_PRODUCT_BY_ID_KEY,
   GET_PRODUCT_METRICS_KEY,
   GET_PRODUCT_ACTIVITY_KEY,
-  GET_SKIN_TYPES_KEY,
   GET_MASTER_CATALOG_KEY,
   GET_MASTER_CATALOG_BY_ID_KEY,
 } from "../query-keys"
@@ -58,13 +56,6 @@ export const useGetProductActivityLogs = (productId: string) => {
     enabled: !!productId && canView,
   })
 }
-
-export const useGetSkinTypeOptions = () =>
-  useQuery({
-    queryKey: [GET_SKIN_TYPES_KEY],
-    queryFn: getSkinTypeOptions,
-    placeholderData: [],
-  })
 
 export const useProductSearch = (search: string) => {
   const canView = useUserStore((s) => s.hasPermission(PERMISSIONS.PRODUCTS_VIEW))
