@@ -103,7 +103,11 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
-      "lightningcss"
+      "lightningcss",
+      "sharp",
+      "workerd",
+      "msw",
+      "protobufjs"
     ]
   }
 }
