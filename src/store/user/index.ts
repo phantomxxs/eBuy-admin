@@ -26,7 +26,10 @@ export const useUserStore = create<UserStore>()(
         set({ user: null, permissions: [], isAuthenticated: false })
       },
 
-      hasPermission: (permission) => get().permissions.includes(permission),
+      hasPermission: (permission) => {
+        const perms = get().permissions
+        return perms.includes("*") || perms.includes(permission)
+      },
     }),
     {
       name: "ebuy-admin-user",

@@ -21,8 +21,11 @@ instance.interceptors.response.use(
   (error) => {
     const status = error?.response?.status
 
-    // 401 Unauthorized — token invalid or expired, clear session and redirect to login
-    if (status === 401) {
+    // 401 Unauthorized — token invalid or expired, clear session and redirect to login.
+    // Skip auth endpoints: a 401 there means invalid credentials / reset token, not an
+    // expired session, and the calling page handles the error itself.
+    const isAuthRequest = (error?.config?.url ?? "").startsWith("/auth/")
+    if (status === 401 && !isAuthRequest) {
       useUserStore.getState().clearUser()
       clearAuthCookie()
       window.location.replace("/login")
